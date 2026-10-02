@@ -70,6 +70,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           # Replace with your actual httpd folder name (case-sensitive)
-          context: ./httpd
+          context: ./http-server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:latest
           push: ${{ github.ref == 'refs/heads/main' }}
