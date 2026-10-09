@@ -1,0 +1,16 @@
+- name: Run backend
+  community.docker.docker_container:
+    name: backend
+    image: maitret17/tp-backend:1.0
+    state: started
+    restart_policy: unless-stopped
+    pull: always
+
+    env:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/db"
+      SPRING_DATASOURCE_USERNAME: "usr"
+      SPRING_DATASOURCE_PASSWORD: "pwd"
+
+    networks:
+      - name: back-network
+      - name: front-network

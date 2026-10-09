@@ -1,0 +1,18 @@
+- name: Run database
+  community.docker.docker_container:
+    name: database
+    image: maitret17/tp-database:1.0
+    state: started
+    restart_policy: unless-stopped
+    pull: always
+
+    env:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "usr"
+      POSTGRES_PASSWORD: "pwd"
+
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+
+    networks:
+      - name: back-network

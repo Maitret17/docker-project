@@ -1,0 +1,13 @@
+- name: Run HTTP server
+  community.docker.docker_container:
+    name: httpd
+    image: maitret17/tp-httpd:1.0
+    state: started
+    restart_policy: unless-stopped
+    pull: always
+
+    published_ports:
+      - "80:80"
+
+    networks:
+      - name: front-network
